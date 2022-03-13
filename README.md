@@ -5,12 +5,8 @@ In this demonstration, I have tried to integrate ansible and terraform by coordi
 
 ## Creating AWS EC2 instance using Terraform: 
 To begin with the setup we use terraform code to create the infrastructure on AWS. We create an AWS EC2 instance and an EBS volume attached to it.
-1. System Requirements 
-    >Master: t2.medium (2 CPUs and 2GB Memory)   
-    >Worker Nodes: t2.micro 
-
-1. Open Below ports in the Security Group. 
-   #### Master node: 
+After the infrstructure is created using Terraform all the information regarding the provisioned resource is saved in its terraform.tfstate file. This state file is used to retrieve the IP of the launched instance which is passes in the Ansible inventory file. This inventory file holds the information regarding its managed node where Ansible needs to install necessary applications.
+#### create Dynamic Ansible inventory file and copy to remote Ansible Control node: 
     `6443  
     32750  
     10250  
