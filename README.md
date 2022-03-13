@@ -23,12 +23,14 @@ After the infrstructure is created using Terraform all the information regarding
 	user     = "root"
 	password = "${var.password}"
 	   host  = "${var.host}"
-    4443  
-    443  
-    8080 `
+      }
 
-   ##### On Master node and Worker node:
-    `179`  
+   ##### copying the ip.txt file to the Ansible control node from local system:
+    `provisioner "file" {
+          source    = "ip.txt"
+	  destination = "/root/ansible_terraform/aws_instance/ip.txt
+    }
+  }
 
    ### `On Master and Worker:`
 1. Perform all the commands as root user unless otherwise specified
