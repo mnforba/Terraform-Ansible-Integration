@@ -3,7 +3,8 @@ The most simplified integration of Ansible and Terraform
 
 In this demonstration, I have tried to integrate ansible and terraform by coordinating Terraform managed nodes with Ansible control nodes. For this, I will launch an AWS instance using terraform and then will use Ansible to configure that instance to deploy our webpage that will automatically open up after deployment.
 
-## Prerequisites: 
+## Creating AWS EC2 instance using Terraform: 
+To begin with the setup we use terraform code to create the infrastructure on AWS. We create an AWS EC2 instance and an EBS volume attached to it.
 1. System Requirements 
     >Master: t2.medium (2 CPUs and 2GB Memory)   
     >Worker Nodes: t2.micro 
