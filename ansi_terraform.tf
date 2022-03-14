@@ -6,9 +6,9 @@ provider "aws" {
 
 #aws instance creation
 resource "aws_instance" "demo1" {
-  ami = "ami-0e1d30f2c40c4c701"
-  instance_type = "t2.micro"
-  security_groups = ["launch-wizard-3"]
+  ami             = "ami-0e1d30f2c40c4c701"
+  instance_type   = "t2.micro"
+  security_groups = [ "launch-wizard-3" ]
    key_name = "demo"
   tags = {
     Name = "TerraformOS"
