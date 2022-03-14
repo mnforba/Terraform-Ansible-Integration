@@ -8,8 +8,8 @@ provider "aws" {
 resource "aws_instance" "demo1" {
   ami             = "ami-0e1d30f2c40c4c701"
   instance_type   = "t2.micro"
-  security_groups = [ "launch-wizard-3" ]
-   key_name = "demo"
+  
+    key_name = "demo"
   tags = {
     Name = "TerraformOS"
   }
@@ -59,24 +59,24 @@ resource "null_resource" "nullremote1" {
   }
 #copying the ip.txt file to the Ansible control node from local system
 provisioner "file" {
-  source      = "ip.txt"
-  destination = "/root/ansible_terraform/aws_instance/ip.txt" 
-  }
+    source      = "ip.txt"
+    destination = "/root/ansible_terraform/aws_instance/ip.txt"
+  		   }
 }
 
-#connecting to the linux OS having the Ansible playbook
+
+#connecting to the Linux OS having the Ansible playbook
 resource "null_resource" "nullremote2" {
-  depends_on = [
-    aws_volume_attachment.ebs_att
-  ]
-  connection {
-    type     = "ssh"
-    user     = "root"
-    password = "${var.password}"
-    host     = "${var.host}"
-  }
+depends_on = [aws_volume_attachment.ebs_att]  
+connection {
+	type     = "ssh"
+	user     = "root"
+	password = "${var.password}"
+    	host= "${var.host}"
+}
   #command to run ansible playbook on remote linux OS
   provisioner "remote-exec" {
+    
     inline = [
         "cd /root/ansible_terraform/aws_instance/",
         "ansible-playbook instance.yml"
