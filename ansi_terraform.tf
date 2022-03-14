@@ -11,7 +11,7 @@ resource "aws_instance" "demo1" {
   security_groups = ["launch-wizard-3"]
    key_name = "demo"
   tags = {
-    Name = "Terraform"
+    Name = "TerraformOS"
   }
 }
 
